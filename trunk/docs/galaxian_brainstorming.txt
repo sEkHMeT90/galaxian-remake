@@ -1,0 +1,36 @@
+
+  galaxian-remake
+  ===============
+
+ Brainstorming inicial
+-----------------------
+
+- Nave, que mueve el usuario (de lado a lado)
+
+- Enemigos, que se mueven en bloque cuando están arriba, y atacan de uno en uno o en bloque de 3.
+
+- Varios niveles de dificultad (en cada nuevo nivel, los enemigos se mueven más deprisa y disparan con más frecuencia). Estos niveles se representan con banderas (bandera distinta tras cada 10).
+
+- Puntuación (y máximo record, que se actualiza en tiempo real).
+
+- Los enemigos bajan con una trayectoria curva, y, si no mueren, se vuelven a colocar arriba (tras una pequeña pausa).
+
+- Si es el último enemigo que queda, no se coloca, sino que vuelve a bajar inmediatamente.
+
+- Enemigos de distinto tipo (distinto color y distinta puntuación)
+
+- Los enemigos dan más puntos si se les mata cuando atacan.
+
+- Los disparos de los enemigos no bajan verticales, sino con una cierta inclinación.
+
+- Si chocan dos disparos, desparecen ambos.
+
+- Sólo bajan los enemigos que están en un extremo, no los centrales.
+
+- Los enemigos bajan con trayectorias curvas.
+
+- Se pierde una vida si la nave es golpeada por un disparo o por una nave enemiga.
+
+- Explosión al morir nuestra nave o al morir una nave enemiga.
+
+- Se puede obtener una vida extra (¿cuando? ¿tras varios niveles? ¿al llegar a ciertos puntos?)
