@@ -1,0 +1,3 @@
+@echo Compilando Galaxian (remake)...
+C:\Windows\Microsoft.NET\Framework\v3.5\csc Galaxian.cs Creditos.cs Disparo.cs  DisparoEnemigo.cs DisparoPersonaje.cs ElemGrafico.cs EnemAmarillo.cs EnemAzul.cs  Enemigo.cs  EnemRojo.cs EnemVioleta.cs  Escuadron.cs Flota.cs Fondo.cs Fuente.cs Hardware.cs Imagen.cs Nave.cs Partida.cs Presentacion.cs Sonido.cs TablaRecords.cs /r:..\Tao.Sdl.dll
+move galaxian.exe ..
