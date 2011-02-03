@@ -12,7 +12,9 @@
    
    Num.   Fecha       Por / Cambios
    ---------------------------------------------------
-   0.01  03-Feb-2011  Raquel Lloréns y María Navarro
+  0.01  02-Feb-2011  Nacho Cabanes
+                      Version inicial: esqueleto vacio
+  0.02  03-Feb-2011  Raquel Lloréns y María Navarro
                       Pantalla principal estática
  ---------------------------------------------------- */
 

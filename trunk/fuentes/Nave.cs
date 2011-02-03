@@ -14,10 +14,10 @@
    ---------------------------------------------------
    0.01  02-Feb-2011  Nacho Cabanes
                       Version inicial: esqueleto vacio
- * 0.02  03-Feb-2011  Frank Royo y Aitor Salgado
+   0.02  03-Feb-2011  Frank Royo y Aitor Salgado
                       Implementar los metodos que componen la clase. Hemos creado nuevos atributos
- *                      ( VidasNave,VelDisparo) y un método GetVida que devolvera a partida la
- *                      cantidad de vidas restantes.
+                       ( VidasNave,VelDisparo) y un método GetVida que devolvera a partida la
+                       cantidad de vidas restantes.
  ---------------------------------------------------- */
 
 public class Nave : ElemGrafico
@@ -34,19 +34,18 @@ public class Nave : ElemGrafico
         MoverA(400, 600-(alto+20));
         miDisparo = new DisparoPersonaje();
         vidas = 3;
+        incrX = 5;
     }
+
 
     public  void MoverDerecha()
     {
-       
         x += incrX;
-
     }
 
 
     public  void MoverIzquierda()
     {
-       
         x -= incrX;
     }
 
@@ -56,7 +55,7 @@ public class Nave : ElemGrafico
         /* TODO: Falta que se actualize el documento para que no haga falta cambiar la X
         miDisparo.Aparecer(x + ancho / 2, y, VelDisparo);*/
 
-        miDisparo.Aparecer(x+ancho/2, y, VelDisparo,5);
+        miDisparo.Aparecer(x+ancho/2, y-5, 0, -VelDisparo);
     }
 
 

@@ -14,6 +14,8 @@
    ---------------------------------------------------
    0.01  02-Feb-2011  Nacho Cabanes
                       Version inicial: esqueleto vacio
+   0.02  03-Feb-2011  Julio Antoranz, Ethan Martinez
+                      Escribe un texto de ejemplo
  ---------------------------------------------------- */
 
 

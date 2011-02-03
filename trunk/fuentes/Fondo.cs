@@ -20,13 +20,10 @@
 
 public class Fondo : ElemGrafico
 {
-	private Partida miPartida;
-	public Fondo(Partida p, int nuevaX, int nuevaY)
+	public Fondo()
 	{
-		miPartida = p;
-		CargarImagen("imagenes/fondo.png");	
-		MoverA(nuevaX,nuevaY);
-		
+		CargarImagen("imagenes/fondo.png");
+        MoverA(64, -317);
 	}
 	
 	

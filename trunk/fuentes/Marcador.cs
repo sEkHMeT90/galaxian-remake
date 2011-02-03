@@ -14,6 +14,8 @@
    ---------------------------------------------------
    0.01  02-Feb-2011  Nacho Cabanes
                       Version inicial: esqueleto vacio
+   0.02  03-Feb-2011  Miguel Laguardia, Cristian Bautista
+                      Muestra las vidas y los puntos 
  ---------------------------------------------------- */
 
 
@@ -32,12 +34,12 @@ public class Marcador
         //private int Banderas;
     
 
-    private Partida miPartida;
+    //private Partida miPartida;
     Fuente tipoDeLetra;
 
-    public Marcador(Partida p)
+    public Marcador()
     {
-        miPartida = p;
+        //miPartida = p;
         tipoDeLetra = new Fuente("FreeSansBold.ttf", 18);
     }
 
@@ -86,7 +88,7 @@ public class Marcador
         if (navecitas > 5) navecitas = 5;
         for (int i = 0; i < navecitas; i++)
         {
-            Vidas.DibujarOculta(680 + 20 * i, 550);
+            imagenVidas.DibujarOculta(680 + 20 * i, 550);
         }
 
         Hardware.EscribirTextoOculta("Vidas",
@@ -99,7 +101,7 @@ public class Marcador
             //Bandera = 1;
         for (int i = 0; i < banderitas; i++)
         {
-            banderitas.DibujarOculta(150 + 20 * i, 350);
+            imagenNivel.DibujarOculta(150 + 20 * i, 350);
         }
 
         Hardware.EscribirTextoOculta("banderitas",
