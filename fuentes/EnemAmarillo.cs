@@ -14,9 +14,18 @@
    ---------------------------------------------------
    0.01  02-Feb-2011  Nacho Cabanes
                       Version inicial: esqueleto vacio
+  
+   0.02  03-Feb-2011  Héctor Pastor, Alejandro Guijarro
+                      Modificada para añadir constructor
+                      con la imagen adecuada
  ---------------------------------------------------- */
 
 public class EnemAmarillo : Enemigo
 {
+    
+    public EnemAmarillo()
+    {
+        CargarImagen("imagenes/enemigoM.png");
+    }
 
 } /* fin de la clase EnemAmarillo */
