@@ -90,12 +90,45 @@ public class Partida
     // --- Comprobar colisiones de enemigo con Nave, etc ---
      void comprobarColisiones()
     {
-        // Nada por ahora
+         //comprobar colisiones Nave Enemiga con mi Nave
+         for (int i = 0; i < miFlota.GetNumEnemigos() ; i++)
+         {
+             if (miFlota.GetEnemigo(i).ColisionCon(miNave))
+             {
+                 miNave.Morir();
+                 miMarcador.IndicarVidas(miNave.GetVidas());
+             }
+         }
+
+
+         //comprobar colisiones Disparo Enemigo con mi Nave
+         for (int i = 0; i < miFlota.GetNumEnemigos(); i++)
+         {
+             if (miFlota.GetEnemigo(i).GetDisparo().ColisionCon(miNave))
+             {
+                 miNave.Morir();
+                 miMarcador.IndicarVidas( miNave.GetVidas() );
+             }
+         }
+
+         //comprobar colisiones Nave Enemiga con mi Disparo
+         for (int i = 0; i < miFlota.GetNumEnemigos(); i++)
+         {
+             if (miFlota.GetEnemigo(i).ColisionCon( miNave.GetDisparo() ))
+             {
+                 miFlota.DestruirEnemigo(i);
+                 puntos += 10;
+                 miMarcador.IndicarPuntos(puntos);
+
+             }
+         }
+
+         
     }
 
 
-    // --- Dibujar en pantalla todos los elementos visibles del juego ---
-    void dibujarElementos()
+     // --- Dibujar en pantalla todos los elementos visibles del juego ---
+     void dibujarElementos()
     {
         // Borro pantalla
         Hardware.BorrarPantallaOculta(0,0,0);
