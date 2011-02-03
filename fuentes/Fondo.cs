@@ -14,13 +14,27 @@
    ---------------------------------------------------
    0.01  02-Feb-2011  Nacho Cabanes
                       Version inicial: esqueleto vacio
+   0.02  03-Feb-2011  Alejandro Guillén y Manuel Martinez
+   					  Fondo repetitivo que se mueve hacia abajo
  ---------------------------------------------------- */
 
 public class Fondo : ElemGrafico
 {
- 
+	private Partida miPartida;
+	public Fondo(Partida p, int nuevaX, int nuevaY)
+	{
+		miPartida = p;
+		CargarImagen("imagenes/fondo.png");	
+		MoverA(nuevaX,nuevaY);
+		
+	}
+	
+	
     public new void Mover()
     {
-
+		y += 5;
+		if(y >= 600)
+			MoverA(64,-317);
+		
     }
 } /* fin de la clase Fondo */
