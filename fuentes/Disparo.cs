@@ -6,8 +6,13 @@
  *   @see Hardware
  *   @author 1-DAI IES San Vicente 2010/11
  *   
- *   03-feb-2011    Antonio Pérez       Indicamos las coordenadas del disparo si es para el enemigo o para el
- *                  Denys Demyanchuk    personaje, implementado los incrementos de las variables.                 
+    Num.   Fecha       Por / Cambios
+   ---------------------------------------------------
+   0.01  02-Feb-2011  Nacho Cabanes
+                      Version inicial: esqueleto vacio
+   0.02  03-feb-2011  Antonio Pérez, Denys Demyanchuk
+                      Indicamos las coordenadas del disparo si es para el enemigo o para el
+                        personaje, implementado los incrementos de las variables.                 
  */
 
 public class Disparo : ElemGrafico
@@ -30,6 +35,9 @@ public class Disparo : ElemGrafico
     {
         y += (short)incrY;
         x += (short)incrX;
+
+        if ((y < 0) || (y > 800)) 
+            Desaparecer();
     }
 
     public  void Desaparecer()

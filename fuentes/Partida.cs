@@ -16,6 +16,9 @@
                       Version inicial: esqueleto, muestra el Nave,
                         permite moverlo a la derecha, izquierda
                         y (vacio) Disparar
+   0.02  03-Feb-2011  David Guerra, Javier Abad: Comprobación de colisiones
+                      Nacho: se dibuja y mueve el fondo
+
  ---------------------------------------------------- */
 
 
@@ -27,6 +30,7 @@ public class Partida
     private Nave miNave;
     private Flota miFlota;
     private Marcador miMarcador;
+    private Fondo miFondo;
 
     // Otros datos del juego
     int puntos;             // Puntuacion obtenida por el usuario
@@ -39,6 +43,7 @@ public class Partida
         miNave = new Nave();
         miFlota = new Flota();
         miMarcador = new Marcador();
+        miFondo = new Fondo();
         puntos = 0;
         partidaTerminada = false;
     }
@@ -82,6 +87,7 @@ public class Partida
     // --- Animación de los enemigos y demás objetos "que se muevan solos" -----
      void moverElementos()
     {
+        miFondo.Mover();
         miFlota.Mover();
         miNave.GetDisparo().Mover();
     }
@@ -104,11 +110,13 @@ public class Partida
          //comprobar colisiones Disparo Enemigo con mi Nave
          for (int i = 0; i < miFlota.GetNumEnemigos(); i++)
          {
-             if (miFlota.GetEnemigo(i).GetDisparo().ColisionCon(miNave))
-             {
-                 miNave.Morir();
-                 miMarcador.IndicarVidas( miNave.GetVidas() );
-             }
+             if (miFlota.GetEnemigo(i).GetDisparo() != null)
+
+                 if (miFlota.GetEnemigo(i).GetDisparo().ColisionCon(miNave))
+                 {
+                     miNave.Morir();
+                     miMarcador.IndicarVidas( miNave.GetVidas() );
+                 }
          }
 
          //comprobar colisiones Nave Enemiga con mi Disparo
@@ -134,6 +142,7 @@ public class Partida
         Hardware.BorrarPantallaOculta(0,0,0);
 
         // Dibujo los elementos
+        miFondo.DibujarOculta();
         miFlota.DibujarOculta();
         miNave.DibujarOculta();
         miNave.GetDisparo().DibujarOculta();

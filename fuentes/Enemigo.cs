@@ -14,7 +14,7 @@
    ---------------------------------------------------
    0.01  02-Feb-2011  Nacho Cabanes
                       Version inicial: esqueleto vacio
- * 0.02  03-Feb-2011  Antonio Ramos y Jose Manuel Rizo
+   0.02  03-Feb-2011  Antonio Ramos y Jose Manuel Rizo
                       Movimiento y ataque del enemigo
  ---------------------------------------------------- */
 
@@ -35,7 +35,7 @@ public class Enemigo : ElemGrafico
 
     // Operations
 
-    public  void Mover()
+    public new void Mover()
     {
         if (atacando)
         {
@@ -65,6 +65,12 @@ public class Enemigo : ElemGrafico
     public DisparoEnemigo GetDisparo()
     {
         return null;
+    }
+
+
+    public bool GetAtacando()
+    {
+        return atacando;
     }
         
 } /* fin de la clase Enemigo */
