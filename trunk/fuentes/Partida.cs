@@ -18,6 +18,11 @@
                         y (vacio) Disparar
    0.02  03-Feb-2011  David Guerra, Javier Abad: Comprobación de colisiones
                       Nacho: se dibuja y mueve el fondo
+ 
+   0.03  08-Feb-2011  Antonio Pérez, Francisco Royo
+                      Creamos un nuevo método llamado inicializar,
+                      en el bucle principal inicializamos los datos,
+                      añadida tecla provisinal para disparo enemigo.
 
  ---------------------------------------------------- */
 
@@ -48,6 +53,16 @@ public class Partida
         partidaTerminada = false;
     }
 
+    void Inicializar()
+    {
+        miNave = new Nave();
+        miFlota = new Flota();
+        miMarcador = new Marcador();
+        miFondo = new Fondo();
+        puntos = 0;
+        partidaTerminada = false;
+        miMarcador.IndicarVidas(miNave.GetVidas());
+    }
 
     // --- Comprobación de teclas, ratón y joystick -----
     void comprobarTeclas()
@@ -66,6 +81,9 @@ public class Partida
           if (Hardware.TeclaPulsada(Hardware.TECLA_A))
               miFlota.Atacar();
 
+          if (Hardware.TeclaPulsada(Hardware.TECLA_D))
+              miFlota.Disparar();
+
           // Compruebo el Joystick
           if (Hardware.JoystickPulsado(0))
               miNave.Disparar();
@@ -76,7 +94,6 @@ public class Partida
               if (posXJoystick > 0) miNave.MoverDerecha();
               else if (posXJoystick < 0) miNave.MoverIzquierda();
           }
-
 
           // Si se pulsa ESC, por ahora termina la partida... y el juego
           if (Hardware.TeclaPulsada(Hardware.TECLA_ESC))
@@ -90,6 +107,7 @@ public class Partida
         miFondo.Mover();
         miFlota.Mover();
         miNave.GetDisparo().Mover();
+        miFlota.GetEnemigo(0).GetDisparo().Mover();
     }
 
 
@@ -103,6 +121,7 @@ public class Partida
              {
                  miNave.Morir();
                  miMarcador.IndicarVidas(miNave.GetVidas());
+                 // TODO: Falta recolocar nave y enemigos
              }
          }
 
@@ -115,7 +134,7 @@ public class Partida
                  if (miFlota.GetEnemigo(i).GetDisparo().ColisionCon(miNave))
                  {
                      miNave.Morir();
-                     miMarcador.IndicarVidas( miNave.GetVidas() );
+                     //miMarcador.IndicarVidas( miNave.GetVidas() );
                  }
          }
 
@@ -144,8 +163,9 @@ public class Partida
         // Dibujo los elementos
         miFondo.DibujarOculta();
         miFlota.DibujarOculta();
-        miNave.DibujarOculta();
         miNave.GetDisparo().DibujarOculta();
+        miFlota.GetEnemigo(0).GetDisparo().DibujarOculta();
+        miNave.DibujarOculta();
         miMarcador.DibujarOculta();
 
         // Finalmente, muestro en pantalla
@@ -163,7 +183,7 @@ public class Partida
     // --- Bucle principal de juego -----
     public void BuclePrincipal()
     {
-
+        Inicializar();
         partidaTerminada = false;
         do {
             comprobarTeclas();

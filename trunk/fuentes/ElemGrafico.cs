@@ -22,6 +22,8 @@
                         colisiones con él y viceversa
                       Añadidas varias direcciones más (esquinas, 
                         APARECIENDO, MOVIENDO)
+   0.03  08-Feb-2011  David martinez y Jose Manuel Rizo
+                      Añadido Get y Set para la variable 'chocable'
 
  ---------------------------------------------------- */
 
@@ -267,6 +269,19 @@ public class ElemGrafico
             centro2x-centro1x) * (180 / System.Math.PI));
     }
 
+    public bool GetChocable()
+    {
+    	return chocable;
+    }
     
+    public void SetChocable( bool nuevo )
+    {
+    	chocable = nuevo;
+    }
+    
+    public bool GetVisible()
+    {
+    	return visible;
+    }
     
 } /* end class ElemGrafico */
