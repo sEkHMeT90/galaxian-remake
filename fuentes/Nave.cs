@@ -18,6 +18,8 @@
                       Implementar los metodos que componen la clase. Hemos creado nuevos atributos
                        ( VidasNave,VelDisparo) y un método GetVida que devolvera a partida la
                        cantidad de vidas restantes.
+   0.03 08-Feb-2011 Maria Navarro y Julio Antoranz
+ *                  Mejorar disparo de nave.
  ---------------------------------------------------- */
 
 public class Nave : ElemGrafico
@@ -25,6 +27,7 @@ public class Nave : ElemGrafico
     private DisparoPersonaje miDisparo;
     private byte vidas;
     const int VelDisparo = 5;
+   
    
     public Nave()
     {
@@ -55,7 +58,12 @@ public class Nave : ElemGrafico
         /* TODO: Falta que se actualize el documento para que no haga falta cambiar la X
         miDisparo.Aparecer(x + ancho / 2, y, VelDisparo);*/
 
-        miDisparo.Aparecer(x+ancho/2, y-5, 0, -VelDisparo);
+        /*TODO: Hacer que el disaro vuelva a aparecer*/
+
+        //if (!miDisparo.GetVisible()) //mientras no este visible 
+        {
+            miDisparo.Aparecer(x + ancho / 2, y - 5, 0, -VelDisparo);
+        }
     }
 
 

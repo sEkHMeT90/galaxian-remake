@@ -1,4 +1,4 @@
-/** 
+﻿/** 
  *   Creditos: pantalla con información sobre los autores
  * 
  *   Parte de "galaxian-remake"
@@ -16,7 +16,11 @@
                       Version inicial: esqueleto vacio
    0.02  03-Feb-2011  Julio Antoranz, Ethan Martinez
                       Escribe un texto de ejemplo
- ---------------------------------------------------- */
+   0.02  03-Feb-2011  Miguel Laguardia , Raquel Lloréns
+             		  Creditos Actualizados sin animacion
+             		  
+            
+---------------------------------------------------- */
 
 
 public class Creditos
@@ -24,7 +28,8 @@ public class Creditos
     // Atributos
     private Fuente fuenteSans18;
     private Fuente fuenteSans12;
-
+	
+    
     public Creditos()  // Constructor
     {
         fuenteSans18 = new Fuente("FreeSansBold.ttf", 18);
@@ -37,33 +42,58 @@ public class Creditos
     {
         bool salir = false;
 
-        byte color = 0x55;
+        byte color = 0xAA;
+        
+        int i;
+        short x, y;
+        
+        string[] nombresCreditos = {
+          
+          "Javier Abad", "Julio Antoranz", "Cristian Bautista", "Denys Demyanchuk",
+          "David Guerra", "Alejandro Guijarro", "Alejandro Guillén", "Miguel Laguardia",
+          "Raquel Lloréns", "Daniel Marin", "Andrés Marotta", "David Martinez",
+          "Ethan Martinez", "Manuel Martinez", "María Navarro", "Héctor Pastor",
+          "Antonio Pérez", "Antonio Ramos", "J.M. Rizos", "Francisco Royo",
+          "Aitor Salgado", "Pedro Zalacaín", "Nacho Cabanes",
+        };
+        
         while (!salir)
         {
 
             Hardware.BorrarPantallaOculta(0, 0, 0); // Borro en negro
 
             Hardware.EscribirTextoOculta(
-                "Galaga Galaxian (Remake) - Creditos", 110, 100,
-                  0x77, 0x77, color, fuenteSans18);
+                "Galaga Galaxian (Remake) - Creditos", 220, 40,
+                  0xFF, 0x00, 0x00, fuenteSans18);
 
-            Hardware.EscribirTextoOculta("Programa original:", 200, 240,
-                  color, color, 0, fuenteSans18);
-            Hardware.EscribirTextoOculta("Galaxian", 200, 270,
-                  color, color, 0, fuenteSans18);
-            Hardware.EscribirTextoOculta("(c) 1979", 200, 300,
-                  color, color, 0, fuenteSans18);
-
-            Hardware.EscribirTextoOculta("Remake:", 200, 360,
-                  color, color, 0, fuenteSans18);
-            Hardware.EscribirTextoOculta("2011", 200, 390,
-                  color, color, 0, fuenteSans18);
+            Hardware.EscribirTextoOculta("Programa original:  Galaxian  (c) 1979 ", 80, 100,
+                  color, color, color, fuenteSans18);
+            
+                 
+            
+            Hardware.EscribirTextoOculta("Remake: 2011 ", 80, 120,
+                  color, color, color, fuenteSans18);
+           
 
             Hardware.EscribirTextoOculta(
                   "Pulsa ESC para volver a la presentación...",
-                  110, 550, 0xAA, 0xAA, 0xAA, fuenteSans12);
+                  80, 550, 0xAA, 0xAA, 0xAA, fuenteSans12);
 
+			
+              // Escribir nombres
+            
+            x = 80;
+            y = 180;
+			for ( i = 0 ; i < nombresCreditos.Length ; i++ ) {
+                Hardware.EscribirTextoOculta(nombresCreditos[i],
+                        /* Coordenadas */ x,y,
+                        /* Colores */ 0x01,(byte) (0xDF - i*5), 0xDF,
+                        fuenteSans18);
 
+                y = (short)(y + 30);
+                if (y > 450) { x += 260; y = 180; }
+
+            }
             Hardware.VisualizarOculta();
             Hardware.Pausa(40);
 

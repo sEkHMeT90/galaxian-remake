@@ -95,9 +95,9 @@ public class Hardware
         }
         
         // Inicializamos sonidos con SDL mixer
-          if (SdlMixer.Mix_OpenAudio(22050, 
+        /*  if (SdlMixer.Mix_OpenAudio(22050, 
               unchecked(Sdl.AUDIO_S16LSB), 2, 1024) == -1)
-            ErrorFatal("No se ha podido inicializar el Sonido"); 
+            ErrorFatal("No se ha podido inicializar el Sonido"); */
       
         // Pausa entre clics, para evitar dos clic demasiado cercanos
         pausaClics = 10;
