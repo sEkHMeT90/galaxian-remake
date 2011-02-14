@@ -1,0 +1,10 @@
+D:\docs\compartido\nprogs\googleCode\galaxian\versionVS2010\galaxianXNA\galaxianXNA\galaxianXNA\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\docs\compartido\nprogs\googleCode\galaxian\versionVS2010\galaxianXNA\galaxianXNA\galaxianXNA\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+D:\docs\compartido\nprogs\googleCode\galaxian\versionVS2010\galaxianXNA\galaxianXNA\galaxianXNA\bin\x86\Debug\galaxianXNA.exe
+D:\docs\compartido\nprogs\googleCode\galaxian\versionVS2010\galaxianXNA\galaxianXNA\galaxianXNA\bin\x86\Debug\galaxianXNA.pdb
+D:\docs\compartido\nprogs\googleCode\galaxian\versionVS2010\galaxianXNA\galaxianXNA\galaxianXNA\obj\x86\Debug\galaxianXNA.exe
+D:\docs\compartido\nprogs\googleCode\galaxian\versionVS2010\galaxianXNA\galaxianXNA\galaxianXNA\obj\x86\Debug\galaxianXNA.pdb
+D:\docs\compartido\nprogs\googleCode\galaxian\versionVS2010\galaxianXNA\galaxianXNA\galaxianXNA\bin\x86\Debug\Content\enemigoA.xnb
+D:\docs\compartido\nprogs\googleCode\galaxian\versionVS2010\galaxianXNA\galaxianXNA\galaxianXNA\bin\x86\Debug\Content\galaxian_logo.xnb
+D:\docs\compartido\nprogs\googleCode\galaxian\versionVS2010\galaxianXNA\galaxianXNA\galaxianXNA\bin\x86\Debug\Content\nave.xnb
+D:\docs\compartido\nprogs\googleCode\galaxian\versionVS2010\galaxianXNA\galaxianXNA\galaxianXNA\bin\x86\Debug\Content\Lucida Console.xnb

@@ -1,0 +1,4 @@
+Content\enemigoA.xnb
+Content\galaxian_logo.xnb
+Content\nave.xnb
+Content\Lucida Console.xnb
