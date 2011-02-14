@@ -8,3 +8,12 @@ D:\docs\compartido\nprogs\googleCode\galaxian\versionVS2010\galaxianXNA\galaxian
 D:\docs\compartido\nprogs\googleCode\galaxian\versionVS2010\galaxianXNA\galaxianXNA\galaxianXNA\bin\x86\Debug\Content\galaxian_logo.xnb
 D:\docs\compartido\nprogs\googleCode\galaxian\versionVS2010\galaxianXNA\galaxianXNA\galaxianXNA\bin\x86\Debug\Content\nave.xnb
 D:\docs\compartido\nprogs\googleCode\galaxian\versionVS2010\galaxianXNA\galaxianXNA\galaxianXNA\bin\x86\Debug\Content\Lucida Console.xnb
+D:\docs\compartido\nprogs\googleCode\galaxian\versionVS2010\galaxianXNA\galaxianXNA\galaxianXNA\bin\x86\Debug\Content\bandera.xnb
+D:\docs\compartido\nprogs\googleCode\galaxian\versionVS2010\galaxianXNA\galaxianXNA\galaxianXNA\bin\x86\Debug\Content\disparo.xnb
+D:\docs\compartido\nprogs\googleCode\galaxian\versionVS2010\galaxianXNA\galaxianXNA\galaxianXNA\bin\x86\Debug\Content\enemigoM.xnb
+D:\docs\compartido\nprogs\googleCode\galaxian\versionVS2010\galaxianXNA\galaxianXNA\galaxianXNA\bin\x86\Debug\Content\enemigoR.xnb
+D:\docs\compartido\nprogs\googleCode\galaxian\versionVS2010\galaxianXNA\galaxianXNA\galaxianXNA\bin\x86\Debug\Content\enemigoV.xnb
+D:\docs\compartido\nprogs\googleCode\galaxian\versionVS2010\galaxianXNA\galaxianXNA\galaxianXNA\bin\x86\Debug\Content\explosionE1.xnb
+D:\docs\compartido\nprogs\googleCode\galaxian\versionVS2010\galaxianXNA\galaxianXNA\galaxianXNA\bin\x86\Debug\Content\explosionE2.xnb
+D:\docs\compartido\nprogs\googleCode\galaxian\versionVS2010\galaxianXNA\galaxianXNA\galaxianXNA\bin\x86\Debug\Content\fondo.xnb
+D:\docs\compartido\nprogs\googleCode\galaxian\versionVS2010\galaxianXNA\galaxianXNA\galaxianXNA\bin\x86\Debug\Content\vida.xnb

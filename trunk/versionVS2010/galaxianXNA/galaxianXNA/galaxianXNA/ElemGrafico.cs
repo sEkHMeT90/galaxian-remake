@@ -13,6 +13,7 @@ namespace galaxianXNA
         protected ContentManager miGestorContenido;
         protected bool contieneImagen = false;
         protected bool contieneSecuencia = false;
+        protected bool visible;
 
 
 
@@ -57,6 +58,38 @@ namespace galaxianXNA
             MoverA(nuevaX, nuevaY);
             listaSprites.Draw(miImagen, new Vector2(x, y), Color.White);
         }
+
+        /// Devuelve el valor de x
+        public short GetX()
+        {
+            return (short) x;
+        }
+
+        /// Devuelve el valor de y
+        public short GetY()
+        {
+            return (short) y;
+        }
+
+        /// Cambia el ancho y el alto
+        public void SetAnchoAlto(short an, short al)
+        {
+            alto = al;
+            ancho = an;
+        }
+
+        /// Devuelve si está visible
+        public bool GetActivo()
+        {
+            return visible;
+        }
+
+        /// Cambia si está visible o no )
+        public void SetVisible(bool a)
+        {
+            visible = a;
+        }
+
 
     }
 }

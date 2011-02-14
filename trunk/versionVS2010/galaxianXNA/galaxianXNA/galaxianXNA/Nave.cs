@@ -31,7 +31,7 @@ namespace galaxianXNA
 
     public class Nave : ElemGrafico
     {
-        //private DisparoPersonaje miDisparo;
+        private DisparoPersonaje miDisparo;
         private byte vidas;
         const int VelDisparo = 5;
 
@@ -43,7 +43,7 @@ namespace galaxianXNA
             alto = 48;
             //CargarImagen("imagenes/nave.png");
             MoverA(400, 600 - (alto + 20));
-            //miDisparo = new DisparoPersonaje();
+            miDisparo = new DisparoPersonaje(c);
             vidas = 3;
             incrX = 5;
         }
@@ -70,7 +70,7 @@ namespace galaxianXNA
 
             //if (!miDisparo.GetVisible()) //mientras no este visible 
             {
-                //miDisparo.Aparecer(x + ancho / 2, y - 5, 0, -VelDisparo);
+                miDisparo.Aparecer(x + ancho / 2, y - 5, 0, -VelDisparo);
             }
         }
 
@@ -92,10 +92,10 @@ namespace galaxianXNA
             return vidas;
         }
 
-        /*public DisparoPersonaje GetDisparo()
+        public DisparoPersonaje GetDisparo()
         {
             return miDisparo;
-        }*/
+        }
 
     } /* fin de la clase Nave */
 
