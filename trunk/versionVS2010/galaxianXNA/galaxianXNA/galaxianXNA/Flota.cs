@@ -1,7 +1,34 @@
-﻿
+﻿/** 
+ *   Flota: bloque de todos los enemigos, que se mueven a la vez
+ * 
+ *   Parte de "galaxian-remake"
+ *  
+ *   @see Hardware
+ *   @author 1-DAI IES San Vicente 2010/11
+ */
+
+/* --------------------------------------------------         
+   Versiones hasta la fecha:
+   
+   Num.   Fecha       Por / Cambios
+   ---------------------------------------------------
+   0.01  02-Feb-2011  Nacho Cabanes
+                      Version inicial: esqueleto vacio
+   0.02  03-Feb-2011  Andrés Marotta, Pedro Zalacain
+                        Array de enemigos.
+                        Método "GetNumEnemigos()" para la clase Partida.
+                        Método "GetEnemigo(columna)" para la clase Enemigo.
+                      Nacho:
+                        Añadido DestruirEnemigo, esqueleto de Mover, Atacar
+  0.03 08-Feb-2011   Aitor Salgado & Antonio Ramos + Jose Rizo y David Martinez
+                     Hemos logrado que rebotara pero hemos tenido que modificar todo
+                      para intentar crear un array de X dimensiones segun los enemigos.
+ ---------------------------------------------------- */
+
 
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+
 namespace galaxianXNA
 {
     class Flota

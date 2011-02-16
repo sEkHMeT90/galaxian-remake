@@ -1,4 +1,22 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿/** 
+ *   ElemGrafico: elemento gráfico
+ * 
+ *   Parte de "galaxian-remake"
+ *  
+ *   @see Hardware
+ *   @author 1-DAI IES San Vicente 2010/11
+ */
+
+/* --------------------------------------------------         
+   Versiones hasta la fecha:
+   
+   Num.   Fecha       Por / Cambios
+   ---------------------------------------------------
+  0.04  16-Feb-2011  Nacho Cabanes
+            	      Adaptación básica a XNA
+ ---------------------------------------------------- */
+
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 
@@ -23,6 +41,8 @@ namespace galaxianXNA
             x = 0; y = 0;
             incrX = 0; incrY = 0;
             CargarImagen(nombreFichero, c);
+            visible = true;
+            ancho = 32; alto = 32;  // Valores por defecto
         }
 
         /// Mueve el elemento grafico a otra posicion
@@ -48,7 +68,8 @@ namespace galaxianXNA
         /// Dibuja en pantalla oculta, como parte de un "SpriteBatch"
         public void DibujarOculta(SpriteBatch listaSprites)
         {
-            listaSprites.Draw(miImagen, new Vector2(x, y), Color.White);
+            if (visible)
+                listaSprites.Draw(miImagen, new Vector2(x, y), Color.White);
         }
 
 
@@ -88,6 +109,23 @@ namespace galaxianXNA
         public void SetVisible(bool a)
         {
             visible = a;
+        }
+
+
+        /// Comprueba si ha chocado con otro elemento gráfico
+        public bool ColisionCon(ElemGrafico otroElem)
+        {
+            // No se debe chocar con un elemento oculto      
+            if ((visible == false) || (otroElem.visible == false))
+                return false;
+            // Ahora ya compruebo coordenadas
+            if ((otroElem.x + otroElem.ancho > x)
+                && (otroElem.y + otroElem.alto > y)
+                && (x + ancho > otroElem.x)
+                && (y + alto > otroElem.y))
+                return true;
+            else
+                return false;
         }
 
 

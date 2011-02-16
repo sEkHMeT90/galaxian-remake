@@ -109,6 +109,7 @@
   <ItemGroup>
     <Compile Include="Creditos.cs" />
     <Compile Include="Disparo.cs" />
+    <Compile Include="DisparoEnemigo.cs" />
     <Compile Include="DisparoPersonaje.cs" />
     <Compile Include="ElemGrafico.cs" />
     <Compile Include="EnemAmarillo.cs" />
@@ -116,8 +117,10 @@
     <Compile Include="Enemigo.cs" />
     <Compile Include="EnemRojo.cs" />
     <Compile Include="EnemVioleta.cs" />
+    <Compile Include="Escuadron.cs" />
     <Compile Include="Flota.cs" />
     <Compile Include="Fondo.cs" />
+    <Compile Include="Marcador.cs" />
     <Compile Include="Nave.cs" />
     <Compile Include="Partida.cs" />
     <Compile Include="Presentacion.cs" />
