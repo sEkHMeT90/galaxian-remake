@@ -1,8 +1,4 @@
-﻿using Microsoft.Xna.Framework.Content;
-
-namespace galaxianXNA
-{
-    /** 
+﻿/** 
  *   Enemigo: detalles comunes a todos los enemigos
  * 
  *   Parte de "galaxian-remake"
@@ -11,39 +7,46 @@ namespace galaxianXNA
  *   @author 1-DAI IES San Vicente 2010/11
  */
 
-    /* --------------------------------------------------         
-       Versiones hasta la fecha:
+/* --------------------------------------------------         
+   Versiones hasta la fecha:
    
-       Num.   Fecha       Por / Cambios
-       ---------------------------------------------------
-       0.01  02-Feb-2011  Nacho Cabanes
-                          Version inicial: esqueleto vacio
-       0.02  03-Feb-2011  Antonio Ramos y Jose Manuel Rizo
-                          Movimiento y ataque del enemigo
-       0.03  08-Feb-2011  Héctor Pastor, Ethan Martínez
-                          El enemigo baja en zigzag al atacar
-                      
-                          Denys Demyanchuk, Daniel Marin, Pedro zalacain
-                          Agregado el disparo del primer Enemigo (sin dibujar)...
-     ---------------------------------------------------- */
+   Num.   Fecha       Por / Cambios
+   ---------------------------------------------------
+   0.01  02-Feb-2011  Nacho Cabanes
+                      Version inicial: esqueleto vacio
+   0.02  03-Feb-2011  Antonio Ramos y Jose Manuel Rizo
+                      Movimiento y ataque del enemigo
+   0.03  08-Feb-2011  Héctor Pastor, Ethan Martínez
+                        El enemigo baja en zigzag al atacar                      
+                      Denys Demyanchuk, Daniel Marin, Pedro zalacain
+                        Agregado el disparo del primer Enemigo (sin dibujar)...
+   0.04  16-Feb-2011  Nacho Cabanes
+             		  Adaptado a XNA
+---------------------------------------------------- */
 
+using Microsoft.Xna.Framework.Content;
+
+namespace galaxianXNA
+{
+    
     public class Enemigo : ElemGrafico
     {
         protected bool atacando;
-        //private DisparoEnemigo Disparo;
+        private DisparoEnemigo Disparo;
         const int VelDisparo = 5;
         private int contador = 0;
-        private short incrementoX = 10;
+        private short incrementoX = 5;
 
         public Enemigo(ContentManager c)
             : base("enemigoA", c)
         {
             //CargarImagen("imagenes/enemigoA.png");
-            incrY = 4;
+            incrY = 2;
             x = 100;
             y = 50;
-            ancho = 39;
-            //Disparo = new DisparoEnemigo();
+            ancho = 33;
+            alto = 24;
+            Disparo = new DisparoEnemigo(c);
             atacando = false;
             //xOriginal = x;
             //yOriginal = y;
@@ -91,7 +94,7 @@ namespace galaxianXNA
             /* TODO: Falta que se actualize el documento para que no haga falta cambiar la X
             miDisparo.Aparecer(x + ancho / 2, y, VelDisparo);*/
 
-            //Disparo.Aparecer(x + ancho / 2, y + 5, 0, +VelDisparo);
+            Disparo.Aparecer(x + ancho / 2, y + 5, 0, +VelDisparo);
         }
 
         public void Regresar()
@@ -99,10 +102,10 @@ namespace galaxianXNA
 
         }
 
-        /*public DisparoEnemigo GetDisparo()
+        public DisparoEnemigo GetDisparo()
         {
             return Disparo;
-        }*/
+        }
 
 
         public bool GetAtacando()

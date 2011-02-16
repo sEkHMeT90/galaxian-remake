@@ -1,4 +1,28 @@
-﻿using Microsoft.Xna.Framework.Content;
+﻿/** 
+ *   Fondo: fondo de estrellas en movimiento
+ * 
+ *   Parte de "galaxian-remake"
+ *  
+ *   @see Hardware
+ *   @author 1-DAI IES San Vicente 2010/11
+ */
+
+/* --------------------------------------------------         
+   Versiones hasta la fecha:
+   
+   Num.   Fecha       Por / Cambios
+   ---------------------------------------------------
+   0.01  02-Feb-2011  Nacho Cabanes
+                      Version inicial: esqueleto vacio
+   0.02  03-Feb-2011  Alejandro Guillén y Manuel Martinez
+   					  Fondo repetitivo que se mueve hacia abajo
+   0.03  08-Feb-2011  Cristian Bautista y David Guerra, retoques por Nacho
+   					  Intento de fondo repetitivo sin espacios en negro
+   0.04  16-Feb-2011  Nacho Cabanes
+             		  Adaptado a XNA
+ ---------------------------------------------------- */
+
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace galaxianXNA

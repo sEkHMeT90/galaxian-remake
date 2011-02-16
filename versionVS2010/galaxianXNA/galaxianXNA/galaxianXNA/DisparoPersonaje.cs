@@ -1,4 +1,13 @@
-﻿using Microsoft.Xna.Framework.Content;
+﻿/** 
+ *   DisparoPersonaje: detalles especÃ­ficos de los disparos de los personajes
+ * 
+ *   Parte de "galaxian-remake"
+ *  
+ *   @see Hardware
+ *   @author 1-DAI IES San Vicente 2010/11
+ */ 
+
+using Microsoft.Xna.Framework.Content;
 
 namespace galaxianXNA
 {

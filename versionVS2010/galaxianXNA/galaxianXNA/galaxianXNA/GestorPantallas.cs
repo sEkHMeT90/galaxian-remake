@@ -1,13 +1,26 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
+/**
+ *   GestorPantallas: Da paso a la presentación, créditos o partida,
+ *     según corresponda
+ *
+ *   Parte de "galaxian-remake"
+ *
+ *   @see Hardware
+ *   @author 1-DAI IES San Vicente 2010/11
+ */
+
+/* --------------------------------------------------
+   Versiones hasta la fecha:
+
+   Num.   Fecha       Por / Cambios
+   ---------------------------------------------------
+   0.04  16-Feb-2011  Nacho Cabanes
+             		  Creado, al adaptar a XNA
+ ---------------------------------------------------- */
+
+
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
 
 namespace galaxianXNA
 {
@@ -18,7 +31,6 @@ namespace galaxianXNA
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        SpriteFont fuente18;
 
         Presentacion miPresentacion;
         Creditos pantallaCreditos;

@@ -1,0 +1,58 @@
+Para la versión 0.05
+
+- Partida: 
+  . Reiniciar partida tras pulsar ESC
+  . Avanzar de nivel si se mata a todos los enemigos
+  . Que el disparo desaparezca al tocar un enemigo
+  . Posición de elementos adecuada
+
+- Marcador: 
+  . Presentación más parecida al original
+  . Quizá usar laterales para que la pantalla sea más estrecha
+  . Mostrar maxima puntuacion
+  . Mostrar nivel actual real
+
+- Flota:
+  . Colocacion "real" de los enemigos
+  . Que no ataque siempre el mismo
+
+- Ayuda:
+  . Añadir pantalla de ayuda, que será la que muestre los enemigos y sus valores
+    (accesible desde Presentación)
+
+- ElemGrafico: 
+  . Añadir soporte para secuencias de imágenes
+
+- Enemigo:
+  . Volver a la posición correcta tras ataque
+  . Mejorar movimiento en ataque
+
+- Fondo: 
+  . Estrechar a la anchura real
+  . Afinar movimiento, para que no tenga zonas negras
+
+- Nave:
+  . Movimiento hasta extremos correcto.
+  . Posición del disparo correcta.
+
+- Fuente:
+  . Crear clase Fuente, para que sea más parecido a la estructura basada en SDL
+    (usar EscribirTextoOculta, con parámetros similares)
+
+- Créditos:
+  . Degradado en los nombres
+  . Añadir alguna animación
+
+==============================================
+
+Para versiones posteriores:
+
+- Ataque de escuadrones superiores
+
+- Distinta puntuación de los enemigos en ataque
+
+- Posibilidad de pausa
+
+- Disparos "no verticales"
+
+- Sonido

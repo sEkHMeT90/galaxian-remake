@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework.Content;
-
-/** 
+﻿/** 
 *   Nave: la nave que maneja el jugador
 * 
 *   Parte de "galaxian-remake"
@@ -22,7 +20,13 @@
                        cantidad de vidas restantes.
    0.03  08-Feb-2011  Maria Navarro y Julio Antoranz
                       Mejorar disparo de nave.
+   0.04  16-Feb-2011  Nacho Cabanes
+             		  Adaptado a XNA
  ---------------------------------------------------- */
+
+
+using Microsoft.Xna.Framework.Content;
+
 
 
 

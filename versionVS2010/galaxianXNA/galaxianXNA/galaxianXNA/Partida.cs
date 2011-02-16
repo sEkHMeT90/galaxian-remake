@@ -1,4 +1,33 @@
-﻿using Microsoft.Xna.Framework;
+﻿/**
+ *   Partida: Logica de una partida de juego
+ *
+ *   Parte de "galaxian-remake"
+ *
+ *   @see Hardware
+ *   @author 1-DAI IES San Vicente 2010/11
+ */
+
+/* --------------------------------------------------
+   Versiones hasta la fecha:
+
+   Num.   Fecha       Por / Cambios
+   ---------------------------------------------------
+   0.01  02-Feb-2011  Nacho Cabanes
+                      Version inicial: esqueleto, muestra el Nave,
+                        permite moverlo a la derecha, izquierda
+                        y (vacio) Disparar
+   0.02  03-Feb-2011  David Guerra, Javier Abad: Comprobación de colisiones
+                      Nacho: se dibuja y mueve el fondo
+   0.03  08-Feb-2011  Antonio Pérez, Francisco Royo
+                      Creamos un nuevo método llamado inicializar,
+                      en el bucle principal inicializamos los datos,
+                      añadida tecla provisinal para disparo enemigo.
+   0.04  16-Feb-2011  Nacho Cabanes
+             		  Adaptado a XNA
+ ---------------------------------------------------- */
+
+
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -8,14 +37,13 @@ namespace galaxianXNA
     class Partida
     {
         GraphicsDeviceManager graphics;
-        //SpriteBatch spriteBatch;
-        SpriteFont fuente18;
         ContentManager contenido;
 
         Fondo miFondo;
         Flota miFlota;
         Nave miNave;
-        //Enemigo miEnemigo;
+        Marcador miMarcador;
+        int puntos = 0;
 
         private bool terminada = false;
 
@@ -28,22 +56,20 @@ namespace galaxianXNA
 
         public void LoadContent()
         {
-            fuente18 = contenido.Load<SpriteFont>("Lucida Console");
-
             miFondo = new Fondo(contenido);
             miNave = new Nave(contenido); miNave.MoverA(400, 550);
-
-            //miEnemigo = new Enemigo(contenido);
             miFlota = new Flota(contenido);
+            miMarcador = new Marcador(contenido);
+            miMarcador.LoadContent();
         }
 
 
         public void MoverElementos()
         {
             miFondo.Mover();
-            //miEnemigo.Mover();
             miFlota.Mover();
             miNave.GetDisparo().Mover();
+            miFlota.GetEnemigo(0).GetDisparo().Mover();
         }
 
 
@@ -61,27 +87,67 @@ namespace galaxianXNA
                 miNave.MoverDerecha();
             if (Keyboard.GetState().IsKeyDown(Keys.Space))
                 miNave.Disparar();
+
+            // Teclas adicionales para pruebas provisionales
+            if (Keyboard.GetState().IsKeyDown(Keys.A))
+                miFlota.Atacar();
+            if (Keyboard.GetState().IsKeyDown(Keys.D))
+                miFlota.Disparar();
         }
 
         
         // --- Comprobar colisiones de enemigo con personaje, etc ---
         public void ComprobarColisiones()
         {
-            // Nada por ahora
+            //comprobar colisiones Nave Enemiga con mi Nave
+            for (int i = 0; i < miFlota.GetNumEnemigos(); i++)
+            {
+                if (miFlota.GetEnemigo(i).ColisionCon(miNave))
+                {
+                    miNave.Morir();
+                    miMarcador.IndicarVidas(miNave.GetVidas());
+                    // TODO: Falta recolocar nave y enemigos
+                }
+            }
+
+            //comprobar colisiones Disparo Enemigo con mi Nave
+            for (int i = 0; i < miFlota.GetNumEnemigos(); i++)
+            {
+                if (miFlota.GetEnemigo(i).GetDisparo() != null)
+
+                    if (miFlota.GetEnemigo(i).GetDisparo().ColisionCon(miNave))
+                    {
+                        miNave.Morir();
+                        //miMarcador.IndicarVidas( miNave.GetVidas() );
+                    }
+            }
+
+            //comprobar colisiones Nave Enemiga con mi Disparo
+            for (int i = 0; i < miFlota.GetNumEnemigos(); i++)
+            {
+                if (miFlota.GetEnemigo(i).ColisionCon(miNave.GetDisparo()))
+                {
+                    miFlota.DestruirEnemigo(i);
+                    puntos += 10;
+                    miMarcador.IndicarPuntos( puntos);
+
+                }
+            }
+
         }
 
 
         // --- Dibujar todos los elementos en pantalla
         public void DibujarElementos(SpriteBatch spriteBatch)
         {
-            //miMapa.DibujarOculta(spriteBatch);
             miFondo.DibujarOculta(spriteBatch);
             miNave.DibujarOculta(spriteBatch);
-            //miEnemigo.DibujarOculta(spriteBatch);
             miFlota.DibujarOculta(spriteBatch);
+
             miNave.GetDisparo().DibujarOculta(spriteBatch);
-            spriteBatch.DrawString(fuente18, "Texto de ejemplo",
-                       new Vector2(300, 50), Color.LightGreen);
+            miFlota.GetEnemigo(0).GetDisparo().DibujarOculta(spriteBatch);
+
+            miMarcador.DibujarOculta(spriteBatch);
         }
 
 
