@@ -20,6 +20,9 @@
                       Arreglo del marcador de vidas y Banderas
   0.04  16-Feb-2011  Nacho Cabanes
             	      Adaptado a XNA
+ 0.05  17-Feb-2011  Rizo, Denys, Javier Abad
+ *                     Adaptar el marcador para que se 
+ *                     parezca al original.
  ---------------------------------------------------- */
 
 using Microsoft.Xna.Framework;
@@ -106,14 +109,15 @@ namespace galaxianXNA
         public void DibujarOculta(SpriteBatch listaSprites)
         {
             listaSprites.DrawString(fuente18, "Puntos:",
-                    new Vector2(10, 10), Color.Green);
+                    new Vector2(160, 10), Color.White);
             listaSprites.DrawString(fuente18, System.Convert.ToString(puntuacion),
-                    new Vector2(100, 10), Color.Green);
+                    new Vector2(250, 10), Color.White);
+
 
             listaSprites.DrawString(fuente18, "Maximo: ",
-                    new Vector2(10, 40), Color.Green);
-            listaSprites.DrawString(fuente18, System.Convert.ToString(mejorPunt),
-                    new Vector2(100, 40), Color.Green);
+                    new Vector2(350, 10), Color.Red);
+            listaSprites.DrawString(fuente18, System.Convert.ToString(puntuacion),
+                    new Vector2(440, 10), Color.Blue);
             
             // Vidas, como barra (maximo 10 segmentos)
             int navecitas = vidas;
@@ -133,7 +137,7 @@ namespace galaxianXNA
             //Bandera = 1;
             for (int i = 0; i < banderitas; i++)
             {
-                imagenNivel.DibujarOculta(750 - posicionesBanderas[i], 550, listaSprites);
+                imagenNivel.DibujarOculta(750 - posicionesBanderas[i], 10, listaSprites);
             }
 
             //Hardware.EscribirTextoOculta("banderitas",
