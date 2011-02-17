@@ -21,6 +21,9 @@
 					  de presentación
   0.04  16-Feb-2011  Nacho Cabanes
             	      Adaptado a XNA
+  0.06  18-Feb-2011  Nacho Cabanes
+            	      Logo más pequeño, textos más centrados,
+                      puntuaciones reales de cada enemigo, colores reales
  ---------------------------------------------------- */
 
 using Microsoft.Xna.Framework;
@@ -61,7 +64,7 @@ namespace galaxianXNA
 
         public void LoadContent()
         {
-            imagenFondo = new ElemGrafico("galaxian_logo", contenido);
+            imagenFondo = new ElemGrafico("galaxian_logo_mini", contenido);
             fuente18 = contenido.Load<SpriteFont>("Lucida Console");
 
             enemigoAzul = new EnemAzul(contenido);
@@ -79,7 +82,7 @@ namespace galaxianXNA
         public void Update()
         {
             // Mover elementos
-            if (desplazActual > 0)
+            if (desplazActual > 70)
                 desplazActual -= 2;
 
 
@@ -109,17 +112,17 @@ namespace galaxianXNA
 
         public void DibujarElementos(SpriteBatch spriteBatch)
         {
-            imagenFondo.DibujarOculta(100, 100, spriteBatch);
+            imagenFondo.DibujarOculta(250, 50, spriteBatch);
             spriteBatch.DrawString(fuente18, "Pulsa J para Jugar",
-                   new Vector2(320, 520), Color.White);
+                   new Vector2(320, 520), Color.Magenta);
             spriteBatch.DrawString(fuente18, "C para Creditos o S para Salir",
-                   new Vector2(260, 550), Color.WhiteSmoke);
+                   new Vector2(260, 550), Color.Purple);
 
             // Dibujar enemigos en pantalla oculta
-            enemigoAzul.MoverA(200 + desplazActual, 305);
+            enemigoAmarillo.MoverA(200 + desplazActual, 305);
             enemigoRojo.MoverA(200 + desplazActual, 355);
             enemigoVioleta.MoverA(200 + desplazActual, 405);
-            enemigoAmarillo.MoverA(200 + desplazActual, 455);
+            enemigoAzul.MoverA(200 + desplazActual, 455);
 
             enemigoAzul.DibujarOculta(spriteBatch);
             enemigoRojo.DibujarOculta(spriteBatch);
@@ -128,23 +131,23 @@ namespace galaxianXNA
 
             //Escribo la pantalla de presentación
             spriteBatch.DrawString(fuente18, "WE  ARE  THE  GALAXIANS",
-                    new Vector2(270, 120), Color.WhiteSmoke);
+                    new Vector2(270, 140), Color.Red);
             spriteBatch.DrawString(fuente18, "MISSION:        DESTROY  ALIENS",
-                    new Vector2(240, 150), Color.WhiteSmoke);
+                    new Vector2(240, 160), Color.Red);
 
             //Escribo las puntuaciones de los enemigos
             spriteBatch.DrawString(fuente18,"-   SCORE  ADVANCE  TABLE   -",
-                    new Vector2(255, 230), Color.WhiteSmoke);
+                    new Vector2(255, 230), Color.White);
             spriteBatch.DrawString(fuente18,   "CONVOY   CHARGER",
-                    new Vector2((short)(300 + desplazActual), 260), Color.WhiteSmoke);
-            spriteBatch.DrawString(fuente18,   "60          800 PTS",
-                    new Vector2((short)(300 + desplazActual), 310), Color.WhiteSmoke);
+                    new Vector2((short)(300 + desplazActual), 260), Color.Cyan);
+            spriteBatch.DrawString(fuente18,   "60          150 PTS",
+                    new Vector2((short)(300 + desplazActual), 310), Color.Cyan);
             spriteBatch.DrawString(fuente18,   "50          100 PTS",
-                    new Vector2((short)(300 + desplazActual), 360), Color.WhiteSmoke);
+                    new Vector2((short)(300 + desplazActual), 360), Color.Cyan);
             spriteBatch.DrawString(fuente18,   "40          80 PTS",
-                    new Vector2((short)(300 + desplazActual), 410), Color.WhiteSmoke);
+                    new Vector2((short)(300 + desplazActual), 410), Color.Cyan);
             spriteBatch.DrawString(fuente18,   "30          60 PTS",
-                    new Vector2((short)(300 + desplazActual), 460), Color.WhiteSmoke);
+                    new Vector2((short)(300 + desplazActual), 460), Color.Cyan);
         }
 
 

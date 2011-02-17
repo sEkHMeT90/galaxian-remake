@@ -36,6 +36,11 @@ namespace galaxianXNA
         {
             listaSprites.DrawString(miLetra, texto, new Vector2(x, y), miColor);
         }
+
+        public void EscribirTextoOculta(string texto, int x, int y, int r, int g, int b, SpriteBatch listaSprites)
+        {
+            listaSprites.DrawString(miLetra, texto, new Vector2(x, y), new Color(r, g, b));
+        }
         
     }
 }

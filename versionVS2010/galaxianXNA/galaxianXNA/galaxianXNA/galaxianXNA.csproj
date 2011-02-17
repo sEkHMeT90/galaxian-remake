@@ -120,6 +120,7 @@
     <Compile Include="Escuadron.cs" />
     <Compile Include="Flota.cs" />
     <Compile Include="Fondo.cs" />
+    <Compile Include="Fuente.cs" />
     <Compile Include="Marcador.cs" />
     <Compile Include="Nave.cs" />
     <Compile Include="Partida.cs" />

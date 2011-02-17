@@ -24,10 +24,13 @@
                       añadida tecla provisinal para disparo enemigo.
    0.04  16-Feb-2011  Nacho Cabanes
              		  Adaptado a XNA
- * 0.05  17-Feb-2011  Daniel Marin
- *                    Ahora al pulsar Esc se reinician las posiciones de la 
- *                    flota, Preparar funciones para avanzar de nivel si los enemigos
- *                    desaparecen
+   0.05  17-Feb-2011  Daniel Marin
+                      Ahora al pulsar Esc se reinician las posiciones de la 
+                      flota, Preparar funciones para avanzar de nivel si los enemigos
+                      desaparecen
+   0.06  18-Feb-2011  Nacho Cabanes
+             		  Se avanza de nivel al matar todos los enemigos
+                      El disparo del personaje sólo mata un enemigo
  ---------------------------------------------------- */
 
 
@@ -47,7 +50,13 @@ namespace galaxianXNA
         Flota miFlota;
         Nave miNave;
         Marcador miMarcador;
+
         int puntos = 0;
+        int nivel = 0;
+        int proporcionDisparos = 20;
+        int proporcionAtaques = 10;
+
+        System.Random generadorAleatorios;
 
         private bool terminada = false;
 
@@ -55,6 +64,7 @@ namespace galaxianXNA
         {
             graphics = dispositivo;
             contenido = c;
+            generadorAleatorios = new System.Random();
         }
 
 
@@ -69,7 +79,13 @@ namespace galaxianXNA
             miFondo.Mover();
             miFlota.Mover();
             miNave.GetDisparo().Mover();
-            miFlota.GetEnemigo(0).GetDisparo().Mover();
+
+            int azar = generadorAleatorios.Next(0, 10000);
+            if (azar < proporcionAtaques)
+                miFlota.Atacar();
+            azar = generadorAleatorios.Next(0, 10000);
+            if (azar < proporcionDisparos)
+                miFlota.Disparar();
         }
 
 
@@ -103,7 +119,7 @@ namespace galaxianXNA
         public void ComprobarColisiones()
         {
             //comprobar colisiones Nave Enemiga con mi Nave
-            for (int i = 0; i < miFlota.GetNumEnemigos(); i++)
+            for (int i = 0; i < miFlota.GetMaxEnemigos(); i++)
             {
                 if (miFlota.GetEnemigo(i).ColisionCon(miNave))
                 {
@@ -114,7 +130,7 @@ namespace galaxianXNA
             }
 
             //comprobar colisiones Disparo Enemigo con mi Nave
-            for (int i = 0; i < miFlota.GetNumEnemigos(); i++)
+            for (int i = 0; i < miFlota.GetMaxEnemigos(); i++)
             {
                 if (miFlota.GetEnemigo(i).GetDisparo() != null)
 
@@ -126,18 +142,23 @@ namespace galaxianXNA
             }
 
             //comprobar colisiones Nave Enemiga con mi Disparo
-            for (int i = 0; i < miFlota.GetNumEnemigos(); i++)
+            for (int i = 0; i < miFlota.GetMaxEnemigos(); i++)
             {
                 if (miFlota.GetEnemigo(i).ColisionCon(miNave.GetDisparo()))
                 {
                     miFlota.DestruirEnemigo(i);
                     puntos += 10;
-                    miMarcador.IndicarPuntos( puntos);
-
+                    miMarcador.IndicarPuntos( puntos );
+                    miNave.GetDisparo().Desaparecer();
                 }
 
-                //if (miFlota.GetNumEnemigosVivos() == 0)
-                //    miFlota.ReiniciarPosiciones();
+                // Si no quedan enemigos, avanzo de nivel
+                if (miFlota.GetNumEnemigos() == 0)
+                {
+                    miFlota = new Flota(contenido);
+                    nivel++;
+                    miMarcador.IndicarNivel( nivel );
+                }
 
             }
 

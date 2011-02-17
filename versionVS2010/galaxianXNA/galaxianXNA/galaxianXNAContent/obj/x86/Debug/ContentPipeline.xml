@@ -17,7 +17,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\docs\compartido\nprogs\googleCode\galaxian\versionVS2010\galaxianXNA\galaxianXNA\galaxianXNA\bin\x86\Debug\Content\galaxian_logo.xnb</Output>
-      <Time>2011-02-14T14:17:51.8174383+01:00</Time>
+      <Time>2011-02-18T00:36:18.2344916+01:00</Time>
     </Item>
     <Item>
       <Source>nave.png</Source>
@@ -117,6 +117,15 @@
       <Options>None</Options>
       <Output>D:\docs\compartido\nprogs\googleCode\galaxian\versionVS2010\galaxianXNA\galaxianXNA\galaxianXNA\bin\x86\Debug\Content\vida.xnb</Output>
       <Time>2011-02-14T23:54:43.462926+01:00</Time>
+    </Item>
+    <Item>
+      <Source>galaxian_logo_mini.png</Source>
+      <Name>galaxian_logo_mini</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\docs\compartido\nprogs\googleCode\galaxian\versionVS2010\galaxianXNA\galaxianXNA\galaxianXNA\bin\x86\Debug\Content\galaxian_logo_mini.xnb</Output>
+      <Time>2011-02-18T00:37:37.0002378+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

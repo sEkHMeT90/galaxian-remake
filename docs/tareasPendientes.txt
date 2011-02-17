@@ -1,3 +1,40 @@
+Para la versión 0.07
+
+- Partida: 
+  . Incrementar dificultad al pasar de nivel
+
+- Marcador: 
+  . Presentación más parecida al original
+  . No reinicial maxima puntuacion
+
+- Ayuda:
+  . Añadir pantalla de ayuda, que será la que muestre los enemigos y sus valores
+    (accesible desde Presentación)
+
+- Pausa:
+  . Añadir posibilidad de pausa desde el juego
+
+- ElemGrafico: 
+  . Completar soporte para secuencias de imágenes
+
+- Enemigo:
+  . Volver a la posición correcta tras ataque
+  . Mejorar movimiento en ataque
+  . Puntos según cada tipo de enemigo y según ataque o estático
+  . Que los disparos no sean totalmente verticales
+
+- Joystick:
+  . Añadir soporte de Joystick
+
+- Sonido:
+  . Añadir soporte de sonido
+
+- Flota
+  . Soporte de escuadron, como grupo de enemigos rojo y amarillo
+
+
+============ Anteriores ================================
+
 Para la versión 0.05
 
 - Partida: 
@@ -48,8 +85,6 @@ Para la versión 0.05
 Para versiones posteriores:
 
 - Ataque de escuadrones superiores
-
-- Distinta puntuación de los enemigos en ataque
 
 - Posibilidad de pausa
 

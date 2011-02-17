@@ -29,6 +29,7 @@ namespace galaxianXNA
             //CargarImagen("imagenes/disparo.png");
             ancho = 5;
             alto = 14;
+            visible = false;
         }
 
         public void Aparecer(int DisparoX, int DisparoY, int DisparoIncrX, int DisparoIncrY)
