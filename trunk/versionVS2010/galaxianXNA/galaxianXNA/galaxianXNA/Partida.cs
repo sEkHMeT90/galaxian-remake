@@ -24,6 +24,10 @@
                       añadida tecla provisinal para disparo enemigo.
    0.04  16-Feb-2011  Nacho Cabanes
              		  Adaptado a XNA
+ * 0.05  17-Feb-2011  Daniel Marin
+ *                    Ahora al pulsar Esc se reinician las posiciones de la 
+ *                    flota, Preparar funciones para avanzar de nivel si los enemigos
+ *                    desaparecen
  ---------------------------------------------------- */
 
 
@@ -56,11 +60,7 @@ namespace galaxianXNA
 
         public void LoadContent()
         {
-            miFondo = new Fondo(contenido);
-            miNave = new Nave(contenido); miNave.MoverA(400, 550);
-            miFlota = new Flota(contenido);
-            miMarcador = new Marcador(contenido);
-            miMarcador.LoadContent();
+            Reiniciar();
         }
 
 
@@ -78,7 +78,10 @@ namespace galaxianXNA
         {
             // Salir
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+            {
+                Reiniciar();
                 terminada = true;
+            }
 
             // Movimiento y disparo de la nave
             if (Keyboard.GetState().IsKeyDown(Keys.Left))
@@ -132,6 +135,10 @@ namespace galaxianXNA
                     miMarcador.IndicarPuntos( puntos);
 
                 }
+
+                //if (miFlota.GetNumEnemigosVivos() == 0)
+                //    miFlota.ReiniciarPosiciones();
+
             }
 
         }
@@ -160,6 +167,11 @@ namespace galaxianXNA
         public void Reiniciar()
         {
             terminada = false;
+            miFondo = new Fondo(contenido);
+            miNave = new Nave(contenido); miNave.MoverA(400, 550);
+            miFlota = new Flota(contenido);
+            miMarcador = new Marcador(contenido);
+            miMarcador.LoadContent();
         }
 
     }
