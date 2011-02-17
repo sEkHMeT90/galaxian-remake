@@ -23,6 +23,8 @@
   0.03 08-Feb-2011   Aitor Salgado & Antonio Ramos + Jose Rizo y David Martinez
                      Hemos logrado que rebotara pero hemos tenido que modificar todo
                       para intentar crear un array de X dimensiones segun los enemigos.
+  0.05 17-Feb-2011   Héctor Pastor Pérez, Raquel Llorens Gambin, Miguel Angel Laguardia
+                     Ahora el enemigo que ataca es aleatorio.
  ---------------------------------------------------- */
 
 
@@ -46,7 +48,7 @@ namespace galaxianXNA
         {
             moverDerecha = true;
             enemigos = new Enemigo[numFilas,numColumnas];
-
+       
             for (int fila = 0; fila < numFilas; fila++)
             {
                 for (int columna = 0; columna < numColumnas; columna++)
@@ -72,6 +74,37 @@ namespace galaxianXNA
                     enemigos[fila, columna].MoverA(40 * columna, 30 * fila);
                 }
             }
+            /*for( int columna = 0; columna < numColumnas; columna++ )
+            {
+                for( int fila = 0; fila < numFilas; fila++ )
+                {
+                    if( ( ( fila == 0 ) && ( columna == 3 ) ) || ( ( fila == 0 ) && ( columna == 6 ) ) )
+                    {
+                        enemigos[ fila, columna ] = new EnemAmarillo(c);
+                        enemigos[ fila, columna ].SetAnchoAlto(33, 24);
+                    }
+
+                    if( ( ( fila == 1 ) && ( columna > 1 ) && ( columna < 7 ) ) )
+                    {
+                        enemigos[ fila, columna ] = new EnemRojo(c);
+                        enemigos[ fila, columna ].SetAnchoAlto(33, 24);
+                    }
+
+                    if( ( ( fila == 2 ) && ( columna > 0 ) && ( columna < 8 ) ) )
+                    {
+                        enemigos[ fila, columna ] = new EnemVioleta(c);
+                        enemigos[ fila, columna ].SetAnchoAlto(33, 24);
+                    }
+
+                    if( fila > 2 )
+                    {
+                        enemigos[fila, columna] = new EnemAzul(c);
+                        enemigos[fila, columna].SetAnchoAlto(33, 24);
+                    }
+
+                    enemigos[ fila, columna ].MoverA(40 * columna, 30 * fila);
+                }
+            }*/
         }
 
 
@@ -106,8 +139,10 @@ namespace galaxianXNA
         // Lanza uno o varios enemigos al ataque
         public void Atacar()
         {
-            // Random r = new Random();
-            enemigos[1,0].Atacar();
+            System.Random generador = new System.Random();
+            int randomColumna = generador.Next(0, numColumnas);
+            int randomFila = generador.Next(0, numFilas);
+            enemigos[randomFila,randomColumna].Atacar();
         }
 
         // Lanza uno o varios enemigos al ataque
