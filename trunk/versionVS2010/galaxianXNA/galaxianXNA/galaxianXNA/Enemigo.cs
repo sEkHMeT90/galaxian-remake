@@ -22,6 +22,9 @@
                         Agregado el disparo del primer Enemigo (sin dibujar)...
    0.04  16-Feb-2011  Nacho Cabanes
              		  Adaptado a XNA
+   0.05  17-Feb-2011  Ethan Martinez, Antonio Pérez y Maria Navarro
+                      El enemigo vuelve a la posicion que le corresponde dentro
+                      de la flota.
 ---------------------------------------------------- */
 
 using Microsoft.Xna.Framework.Content;
@@ -36,6 +39,7 @@ namespace galaxianXNA
         const int VelDisparo = 5;
         private int contador = 0;
         private short incrementoX = 5;
+        protected int xOriginal;
 
         public Enemigo(ContentManager c)
             : base("enemigoA", c)
@@ -48,7 +52,7 @@ namespace galaxianXNA
             alto = 24;
             Disparo = new DisparoEnemigo(c);
             atacando = false;
-            //xOriginal = x;
+            xOriginal = x;
             //yOriginal = y;
         }
 
@@ -56,6 +60,7 @@ namespace galaxianXNA
 
         public new void Mover()
         {
+            xOriginal++;
             if (atacando)
             {
 
@@ -65,7 +70,7 @@ namespace galaxianXNA
                 {
                     atacando = false;
                     y = 5;
-                    //x = xOriginal;
+                    x = xOriginal+2;
                 }
 
                 if (contador < 20)
