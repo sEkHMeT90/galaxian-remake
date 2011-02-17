@@ -20,6 +20,8 @@
              		  Creditos Actualizados sin animacion
    0.04  16-Feb-2011  Nacho Cabanes
              		  Adaptado a XNA
+   0.05  17-Feb-2011  Aitor Salgado, Antonio Ramos, David Martinez
+                      Búsqueda y modificación de colores
 ---------------------------------------------------- */
 
 using Microsoft.Xna.Framework;
@@ -82,24 +84,28 @@ namespace galaxianXNA
         public void DibujarElementos(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawString(fuente18, "Remake 2011 por 1 DAI San Vicente",
-                   new Vector2(xTexto, yTexto), Color.WhiteSmoke);
+                   new Vector2(xTexto, yTexto), Color.Gray);
 
             spriteBatch.DrawString(fuente18, "Galaxian (Remake) - Creditos",
                    new Vector2(220, 40), Color.Red);
 
             spriteBatch.DrawString(fuente18, "Programa original:  (c) Namco 1979",
-                   new Vector2(80, 100), Color.Red);
+                   new Vector2(80, 100), Color.PowderBlue);
             spriteBatch.DrawString(fuente18, "Remake 2011: ",
-                   new Vector2(80, 130), Color.Red);
+                   new Vector2(80, 130), Color.PowderBlue);
             spriteBatch.DrawString(fuente18, "Pulsa ESC para volver . . . ",
-                   new Vector2(80, 550), Color.Chocolate);
+                   new Vector2(80, 550), Color.WhiteSmoke);
 			
             // Escribir nombres            
             int x = 80;
             int y = 180;
+            System.Random r = new System.Random();
+            int colorR = r.Next(0,256);
+            int colorG = r.Next(0, 256);
+            int colorB = r.Next(0, 256);
 			for ( int i = 0 ; i < nombresCreditos.Length ; i++ ) {
                 spriteBatch.DrawString(fuente18, nombresCreditos[i],
-                   new Vector2(x, y), Color.Brown);
+                   new Vector2(x, y), new Color(0x01,(byte) (0xDF - i*5), 0xDF) );
                         // /* Colores */ 0x01,(byte) (0xDF - i*5), 0xDF,
                 y = (short)(y + 30);
                 if (y > 450) 
