@@ -14,6 +14,8 @@
    ---------------------------------------------------
   0.04  16-Feb-2011  Nacho Cabanes
             	      Adaptación básica a XNA
+  0.05  17-Feb-2011  Fran Royo, Alex Guillen, David Guerra.
+            	      Carga secuencia de imagenes
  ---------------------------------------------------- */
 
 using Microsoft.Xna.Framework.Graphics;
@@ -32,7 +34,7 @@ namespace galaxianXNA
         protected bool contieneImagen = false;
         protected bool contieneSecuencia = false;
         protected bool visible;
-
+        protected Texture2D[] misImagenes; //cREmos un array texture2d
 
 
 
@@ -64,6 +66,18 @@ namespace galaxianXNA
             contieneSecuencia = false;
         }
 
+        /// Carga la secuencia de imagenes imagen2D
+        public void CargarSecuencia(string[] nombre, ContentManager contenido)
+        {
+            //miImagen = Texture2D.FromStream(miPartida.GetGraphics(), 
+            //    new FileStream ( nombre ,FileMode.Open ) );
+            for (int i = 0; i < nombre.Length; i++ )
+                misImagenes[i] = contenido.Load<Texture2D>(nombre[i]);
+            //miGestorContenido = c;
+
+            contieneImagen = true;
+            contieneSecuencia = true;
+        }
 
         /// Dibuja en pantalla oculta, como parte de un "SpriteBatch"
         public void DibujarOculta(SpriteBatch listaSprites)
