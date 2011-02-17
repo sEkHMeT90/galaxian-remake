@@ -20,11 +20,18 @@
                         Método "GetEnemigo(columna)" para la clase Enemigo.
                       Nacho:
                         Añadido DestruirEnemigo, esqueleto de Mover, Atacar
-  0.03 08-Feb-2011   Aitor Salgado & Antonio Ramos + Jose Rizo y David Martinez
-                     Hemos logrado que rebotara pero hemos tenido que modificar todo
+   0.03  08-Feb-2011  Aitor Salgado & Antonio Ramos + Jose Rizo y David Martinez
+                      Hemos logrado que rebotara pero hemos tenido que modificar todo
                       para intentar crear un array de X dimensiones segun los enemigos.
-  0.05 17-Feb-2011   Héctor Pastor Pérez, Raquel Llorens Gambin, Miguel Angel Laguardia
-                     Ahora el enemigo que ataca es aleatorio.
+   0.05  17-Feb-2011  Héctor Pastor Pérez, Raquel Llorens Gambin, Miguel Angel Laguardia
+                      Ahora el enemigo que ataca es aleatorio.
+   0.06  18-Feb-2011  Nacho Cabanes
+             		  Enemigos colocados en filas, no en columnas
+                      Incluidos la cantidad de enemigos del juego original
+                      GetNumEnemigos devuelve la cantidad real que quedan
+                      Cambiados límites de mvto y posic inicial
+                      Los enemigos atacan al azar
+                      Los disparos atacan al azar
  ---------------------------------------------------- */
 
 
@@ -40,8 +47,10 @@ namespace galaxianXNA
         private Enemigo[,] enemigos;
         private bool moverDerecha;
     
-        private int numFilas = 4;
-        private int numColumnas = 9;
+        private int numFilas = 6;
+        private int numColumnas = 10;
+
+        private int cantidadEnemigos;
 
     
         public Flota(ContentManager c)
@@ -53,58 +62,33 @@ namespace galaxianXNA
             {
                 for (int columna = 0; columna < numColumnas; columna++)
                 {
-                    if (columna < 3)
-                    {
-                        enemigos[fila, columna] = new EnemAzul(c);
-                        enemigos[fila, columna].SetAnchoAlto(33, 24);
-                    }
-
-                    if ((columna >= 3) && (columna < 6))
-                    {
+                    if (fila == 0)
                         enemigos[fila, columna] = new EnemAmarillo(c);
-                        enemigos[fila, columna].SetAnchoAlto(33, 24);
-                    }
 
-                    if ((columna >= 6))
-                    {
+                    else if (fila == 1)
                         enemigos[fila, columna] = new EnemRojo(c);
-                        enemigos[fila, columna].SetAnchoAlto(33, 24);
-                    }
 
-                    enemigos[fila, columna].MoverA(40 * columna, 30 * fila);
-                }
-            }
-            /*for( int columna = 0; columna < numColumnas; columna++ )
-            {
-                for( int fila = 0; fila < numFilas; fila++ )
-                {
-                    if( ( ( fila == 0 ) && ( columna == 3 ) ) || ( ( fila == 0 ) && ( columna == 6 ) ) )
-                    {
-                        enemigos[ fila, columna ] = new EnemAmarillo(c);
-                        enemigos[ fila, columna ].SetAnchoAlto(33, 24);
-                    }
+                    else if (fila == 2)
+                        enemigos[fila, columna] = new EnemVioleta(c);
 
-                    if( ( ( fila == 1 ) && ( columna > 1 ) && ( columna < 7 ) ) )
-                    {
-                        enemigos[ fila, columna ] = new EnemRojo(c);
-                        enemigos[ fila, columna ].SetAnchoAlto(33, 24);
-                    }
-
-                    if( ( ( fila == 2 ) && ( columna > 0 ) && ( columna < 8 ) ) )
-                    {
-                        enemigos[ fila, columna ] = new EnemVioleta(c);
-                        enemigos[ fila, columna ].SetAnchoAlto(33, 24);
-                    }
-
-                    if( fila > 2 )
-                    {
+                    else
                         enemigos[fila, columna] = new EnemAzul(c);
-                        enemigos[fila, columna].SetAnchoAlto(33, 24);
-                    }
 
-                    enemigos[ fila, columna ].MoverA(40 * columna, 30 * fila);
+                    enemigos[fila, columna].MoverA(40 * columna + 180, 30 * fila + 80);
                 }
-            }*/
+                
+            }
+            cantidadEnemigos = numFilas * numColumnas;
+
+            // Dejo los huecos en la primera fila
+            DestruirEnemigo(0); DestruirEnemigo(1); DestruirEnemigo(2);
+            DestruirEnemigo(4); DestruirEnemigo(5); DestruirEnemigo(2);
+            DestruirEnemigo(7); DestruirEnemigo(8); DestruirEnemigo(9);
+            // Y en la segunda
+            DestruirEnemigo(10); DestruirEnemigo(11);
+            DestruirEnemigo(18); DestruirEnemigo(19);
+            // Y en la tercera
+            DestruirEnemigo(20); DestruirEnemigo(29);
         }
 
 
@@ -113,15 +97,18 @@ namespace galaxianXNA
         {
             // Random r = new Random();
             // Si el ultimo enemigo toca, debe rebotar
-            if (enemigos[numFilas-1,numColumnas - 1].GetX() > 740)
+            if (enemigos[numFilas-1,numColumnas - 1].GetX() > 680)
                 moverDerecha = false;
 
-            if (enemigos[numFilas-1,0].GetX() <= 0)
+            if (enemigos[numFilas-1,0].GetX() <= 80)
                 moverDerecha = true;
 
             for (int fila = 0; fila < numFilas; fila++)
             {
                 for (int columna = 0; columna < numColumnas; columna++)
+                {
+                    enemigos[fila, columna].GetDisparo().Mover();
+
                     if (enemigos[fila, columna].GetAtacando())
                         enemigos[fila, columna].Mover();
                     else
@@ -132,6 +119,7 @@ namespace galaxianXNA
                         else
                             enemigos[fila, columna].MoverA(
                             enemigos[fila, columna].GetX() - 1, enemigos[fila, columna].GetY());
+                }
             }
         
         }
@@ -149,21 +137,36 @@ namespace galaxianXNA
         public void Disparar()
         {
             // Random r = new Random();
-            enemigos[0,0].Disparar();
+            //enemigos[0,0].Disparar();
+            System.Random generador = new System.Random();
+            int randomColumna = generador.Next(0, numColumnas);
+            int randomFila = generador.Next(0, numFilas);
+            enemigos[randomFila, randomColumna].Disparar();
         }
+
 
         // Dibuja todos los enemigos
         public  void DibujarOculta(SpriteBatch listaSprites)
         {
             for (int fila = 0; fila < numFilas; fila++)
-              for (int columna = 0; columna < numColumnas; columna++)
-                enemigos[fila,columna].DibujarOculta(listaSprites);
+                for (int columna = 0; columna < numColumnas; columna++)
+                {
+                    enemigos[fila, columna].DibujarOculta(listaSprites);
+                    enemigos[fila, columna].GetDisparo().DibujarOculta(listaSprites);
+                }
         }
 
-        // Devuelve la cantidad de enemigos
+        // Devuelve la cantidad de enemigos restantes
         public int GetNumEnemigos()
         {
-            return numFilas * numColumnas;
+            return cantidadEnemigos;
+        }
+
+
+        // Devuelve la cantidad de enemigos totales en el array
+        public int GetMaxEnemigos()
+        {
+            return numFilas* numColumnas;
         }
 
 
@@ -183,53 +186,16 @@ namespace galaxianXNA
         // Devuelve un enemigo
         public void DestruirEnemigo(int posicion)
         {
+            cantidadEnemigos--;
             int fila = posicion / numColumnas;
             int columna = posicion % numColumnas;
             enemigos[fila, columna].SetVisible( false );
+
+            //enemigos[columna].SetChocable( false );
+            //enemigos[columna].CambiarDireccion(ElemGrafico.MURIENDO);
+            //enemigos[columna].SiguienteFotograma();
         }
 
-        /* Cambios que realizn David y Rizo
-         * 
-         *   public Flota()
-        {
-            enemigos = new Enemigo[maxEnemigos];
-
-            for (int columna = 0; columna < maxEnemigos; columna++)
-            {
-            
-                if (columna < 3)
-                {
-                    enemigos[columna] = new EnemAzul();
-                    enemigos[columna].SetAnchoAlto(33,24);
-                }
-
-                if ((columna >= 3) && (columna < 6))
-                {
-                    enemigos[columna] = new EnemAmarillo();
-                    enemigos[columna].SetAnchoAlto(33,33);
-                }
-
-                if ((columna >= 6) )
-                {
-                    enemigos[columna] = new EnemRojo();
-                    enemigos[columna].SetAnchoAlto(33,24);
-                }
-
-                enemigos[columna].MoverA(33 * columna, 5);
-            
-            }
-         * 
-         * 
-        // Devuelve un enemigo
-        public void DestruirEnemigo(int columna)
-        {
-    	    /*enemigos[columna].SetChocable( false );
-    	
-    	    enemigos[columna].CambiarDireccion(ElemGrafico.MURIENDO);
-    	    enemigos[columna].SiguienteFotograma();
-    	
-            enemigos[columna].SetVisible( false );
-        }
-        */
+        
     }
 }

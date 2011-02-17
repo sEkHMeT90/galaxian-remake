@@ -18,11 +18,14 @@
                       Muestra las vidas y los puntos 
    0.03  08-Feb-2011  Alejandro Guijarro, Javier Abad
                       Arreglo del marcador de vidas y Banderas
-  0.04  16-Feb-2011  Nacho Cabanes
+   0.04  16-Feb-2011  Nacho Cabanes
             	      Adaptado a XNA
- 0.05  17-Feb-2011  Rizo, Denys, Javier Abad
- *                     Adaptar el marcador para que se 
- *                     parezca al original.
+   0.05  17-Feb-2011  Rizo, Denys, Javier Abad
+                      Adaptar el marcador para que se 
+                      parezca al original.
+   0.06  18-Feb-2011  Nacho Cabanes
+            	      Se muestra el nivel real, en vez de siempre 5
+
  ---------------------------------------------------- */
 
 using Microsoft.Xna.Framework;
@@ -132,9 +135,8 @@ namespace galaxianXNA
             //  tipoDeLetra);
 
             // Banderas,(maximo 10 segmentos)
-            int banderitas = 5;// Numero de banderitas prestablecido
-            if (banderitas > 10) banderitas = 0;
-            //Bandera = 1;
+            int banderitas = nivel;// Numero de banderitas prestablecido
+            if (banderitas > 10) banderitas = 10;
             for (int i = 0; i < banderitas; i++)
             {
                 imagenNivel.DibujarOculta(750 - posicionesBanderas[i], 10, listaSprites);

@@ -11,3 +11,4 @@ Content\explosionE1.xnb
 Content\explosionE2.xnb
 Content\fondo.xnb
 Content\vida.xnb
+Content\galaxian_logo_mini.xnb
