@@ -22,6 +22,9 @@
                       Mejorar disparo de nave.
    0.04  16-Feb-2011  Nacho Cabanes
              		  Adaptado a XNA
+   0.05  17-Feb-2011  Fran Royo, Alex Guillen, David Guerra.
+             		  Movimiento hasta extremos correcto.
+                      Posición del disparo correcta.
  ---------------------------------------------------- */
 
 
@@ -55,13 +58,19 @@ namespace galaxianXNA
 
         public void MoverDerecha()
         {
-            x += incrX;
+
+            if( x < 800 - ancho -5)
+                x += incrX;
+            
+                
+
         }
 
 
         public void MoverIzquierda()
         {
-            x -= incrX;
+            if (x > 0)
+                x -= incrX;
         }
 
         // Devuelve la posición donde sale el disparo y con el ancho indicamos la posición donde sale.
@@ -74,7 +83,7 @@ namespace galaxianXNA
 
             //if (!miDisparo.GetVisible()) //mientras no este visible 
             {
-                miDisparo.Aparecer(x + ancho / 2, y - 5, 0, -VelDisparo);
+                miDisparo.Aparecer((x + ancho / 2) -2, y - 7, 0, -VelDisparo);
             }
         }
 
